@@ -1,0 +1,27 @@
+server:
+  port: 56010
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true #spring boot 2.1 需要设定
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 122.51.74.196:8848
+        namespace: d6a22809-ea6f-4387-9aa0-02a749fbf1f4
+      config:
+        server-addr: 122.51.74.196:8848
+        namespace: d6a22809-ea6f-4387-9aa0-02a749fbf1f4
+        file-extension: yml
+        group: NACOS_MICROSERVICE_GROUP #业务组
+dubbo:
+  consumer:
+    check: false  #关闭服务provider 可用检测
+
+#路由配置采用nacos远程配置
+zuul:
+  routes:
+    application1:
+      stripPrefix: false
+      path: /application1/**

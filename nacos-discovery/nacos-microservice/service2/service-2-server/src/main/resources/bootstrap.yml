@@ -1,0 +1,30 @@
+server:
+  port: ${port:56040}
+spring:
+  application:
+    name: service2  #dubbo spring cloud将application name注册为dubbo application name，可以省略dubbo aplication name配置
+  main:
+    allow-bean-definition-overriding: true #springboot 2.1需要设定
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 122.51.74.196:8848
+        namespace: d6a22809-ea6f-4387-9aa0-02a749fbf1f4
+        cluster-name: DEFAULT
+      config:
+        server-addr: 122.51.74.196:8848
+        namespace: d6a22809-ea6f-4387-9aa0-02a749fbf1f4
+        file-extension: yml
+        group: NACOS_MICROSERVICE_GROUP
+dubbo:
+  scan:
+    base-packages: com.ywl.nacos.microservice
+  protocol:
+    name: dubbo
+    port: ${dubbo_port:20891}
+  registry:
+    address: nacos://122.51.74.196:8848  #说明注册到nacos服务器上
+  application:
+    qos-enable: false #dubbo 运维服务是否开启
+  consumer:
+    check: false #启动时是否检查依赖的服务

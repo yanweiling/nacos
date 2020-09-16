@@ -1,0 +1,13 @@
+server:
+  port: 56010
+spring:
+  application:
+    name: service1
+  cloud:
+    nacos:
+      config:
+        server-addr: 122.51.74.196:8848
+        file-extension: yml
+        namespace: 3b547f30-a649-4091-8ece-e0f815ddb724
+        group: DEFAULT_GROUP
+
